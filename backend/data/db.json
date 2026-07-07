@@ -1,0 +1,516 @@
+{
+  "users": [
+    {
+      "_id": "u_admin",
+      "name": "Admin NammaService",
+      "email": "admin@nammaservice.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_arun",
+      "name": "Arun Kumar",
+      "email": "arun@gmail.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_kavitha",
+      "name": "Kavitha Ram",
+      "email": "kavitha@gmail.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_deepak",
+      "name": "Deepak Raj",
+      "email": "deepak@gmail.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_ravi",
+      "name": "Ramesh Kumar",
+      "email": "ravi@gmail.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_mohamed",
+      "name": "Mohamed Ali",
+      "email": "mohamed@gmail.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_suresh",
+      "name": "Suresh Raina",
+      "email": "suresh@gmail.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_meera",
+      "name": "Meera Sen",
+      "email": "meera@gmail.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_vikram",
+      "name": "Vikram Singh",
+      "email": "vikram@gmail.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_priya",
+      "name": "Priya Sharma",
+      "email": "priya@gmail.com",
+      "password": "$2a$10$abcdefghijklmnopqrstuv",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop"
+    },
+    {
+      "_id": "u_1781853309647",
+      "name": "sowmiya",
+      "email": "ajanmam@gmail.com",
+      "password": "$2b$10$R12f66LJKIo6Qy/JblIVUuxosrd2d7xE5nemw0oY/DOcGgpu0FXcu",
+      "role": "user",
+      "avatar": "https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png",
+      "savedProfessionals": []
+    }
+  ],
+  "professionals": [
+    {
+      "_id": "p_ravi",
+      "user": "u_ravi",
+      "serviceType": "Plumber",
+      "title": "Expert Plumbing & Pipefitting Specialist",
+      "bio": "Certified plumber with over 8 years of experience in residential and commercial plumbing. Specialized in leak detection, pipe repair, and bathroom installations. Quality work and customer satisfaction are my top priorities.",
+      "experience": 8,
+      "hourlyRate": 350,
+      "location": {
+        "address": "12 Main Rd, Adyar",
+        "city": "Chennai",
+        "state": "Tamil Nadu",
+        "zipcode": "600020",
+        "coordinates": [
+          80.2504,
+          13.0063
+        ]
+      },
+      "skills": [
+        "Leak Detection",
+        "Pipe Repair",
+        "Water Heaters",
+        "Drain Cleaning",
+        "Tap Installation"
+      ],
+      "whatsappNumber": "919876543210",
+      "isAvailable": true,
+      "averageRating": 4.5,
+      "reviewCount": 2
+    },
+    {
+      "_id": "p_mohamed",
+      "user": "u_mohamed",
+      "serviceType": "AC Technician",
+      "title": "Senior AC Installation & Repair Engineer",
+      "bio": "Providing expert air conditioning services for 10 years. Specializing in split and window AC installation, gas charging, filter cleanup, and compressor replacement. Quick service and transparent rates.",
+      "experience": 10,
+      "hourlyRate": 500,
+      "location": {
+        "address": "45 Cathedral Rd, Teynampet",
+        "city": "Chennai",
+        "state": "Tamil Nadu",
+        "zipcode": "600086",
+        "coordinates": [
+          80.2511,
+          13.0452
+        ]
+      },
+      "skills": [
+        "AC Installation",
+        "Gas Charging",
+        "Filter Cleaning",
+        "Compressor Repair",
+        "Wiring Fixes"
+      ],
+      "whatsappNumber": "919876543211",
+      "isAvailable": true,
+      "averageRating": 5,
+      "reviewCount": 1
+    },
+    {
+      "_id": "p_suresh",
+      "user": "u_suresh",
+      "serviceType": "Electrician",
+      "title": "Certified Domestic & Industrial Electrician",
+      "bio": "Expert electrician available for all kinds of household electrical works. Over 6 years of experience in panel wiring, lighting design, power sockets repair, and smart home setups. Insured and certified.",
+      "experience": 6,
+      "hourlyRate": 300,
+      "location": {
+        "address": "78 MG Road, Indiranagar",
+        "city": "Bangalore",
+        "state": "Karnataka",
+        "zipcode": "560038",
+        "coordinates": [
+          77.6404,
+          12.9719
+        ]
+      },
+      "skills": [
+        "Switchboard Wiring",
+        "Lighting Installation",
+        "Short Circuit Fixes",
+        "Appliance Repair",
+        "Inverter Setup"
+      ],
+      "whatsappNumber": "919876543212",
+      "isAvailable": true,
+      "averageRating": 5,
+      "reviewCount": 1
+    },
+    {
+      "_id": "p_meera",
+      "user": "u_meera",
+      "serviceType": "Home Tutor",
+      "title": "Senior High School Mathematics & Physics Tutor",
+      "bio": "I have a Masters in Physics and over 7 years of teaching experience. I offer home tutoring services for high school students, specializing in CBSE and ICSE syllabus. My students show average score improvements of 25%.",
+      "experience": 7,
+      "hourlyRate": 600,
+      "location": {
+        "address": "30 Link Rd, Jayanagar",
+        "city": "Bangalore",
+        "state": "Karnataka",
+        "zipcode": "560011",
+        "coordinates": [
+          77.5824,
+          12.9307
+        ]
+      },
+      "skills": [
+        "CBSE Curriculum",
+        "ICSE Physics",
+        "Algebra & Geometry",
+        "Test Preparation",
+        "Doubt Solving"
+      ],
+      "whatsappNumber": "919876543213",
+      "isAvailable": true,
+      "averageRating": 5,
+      "reviewCount": 1
+    },
+    {
+      "_id": "p_vikram",
+      "user": "u_vikram",
+      "serviceType": "Laptop/Mobile Repair",
+      "title": "Certified Chip-Level Device Hardware Technician",
+      "bio": "Micro-soldering and chip-level repairing expert for Apple and Windows products. 5 years of hardware servicing experience covering motherboard restoration, cracked screen replacements, liquid damage repairs, and software installs.",
+      "experience": 5,
+      "hourlyRate": 450,
+      "location": {
+        "address": "12 Nehru Place Market",
+        "city": "Delhi",
+        "state": "Delhi",
+        "zipcode": "110019",
+        "coordinates": [
+          77.2514,
+          28.5492
+        ]
+      },
+      "skills": [
+        "Motherboard Repair",
+        "Screen Replacement",
+        "OS Reinstall",
+        "Water Damage Recovery",
+        "Keyboard Fixes"
+      ],
+      "whatsappNumber": "919876543214",
+      "isAvailable": true,
+      "averageRating": 4,
+      "reviewCount": 1
+    },
+    {
+      "_id": "p_priya",
+      "user": "u_priya",
+      "serviceType": "House Cleaner",
+      "title": "Professional Home Deep Cleaning & Sanitisation Specialist",
+      "bio": "Over 4 years of experience delivering pristine clean homes. We use eco-friendly chemicals and professional vacuum machines to sanitise and deep-clean rooms, bathrooms, and kitchens. Punctual, trustable, and thorough.",
+      "experience": 4,
+      "hourlyRate": 400,
+      "location": {
+        "address": "89 Linking Rd, Bandra West",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "zipcode": "400050",
+        "coordinates": [
+          72.8339,
+          19.0607
+        ]
+      },
+      "skills": [
+        "Deep Cleaning",
+        "Kitchen Sanitation",
+        "Sofa Shampooing",
+        "Bathroom Cleaning",
+        "Floor Polishing"
+      ],
+      "whatsappNumber": "919876543215",
+      "isAvailable": true,
+      "averageRating": 5,
+      "reviewCount": 0
+    }
+  ],
+  "reviews": [
+    {
+      "_id": "r1",
+      "title": "Excellent Service",
+      "text": "Ramesh arrived exactly on time and resolved our kitchen pipe blockage within 20 minutes. Highly recommended!",
+      "rating": 5,
+      "user": "u_arun",
+      "professional": "p_ravi",
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    },
+    {
+      "_id": "r2",
+      "title": "Fair price, good job",
+      "text": "Installed the new taps cleanly. Price is reasonable and work is high quality.",
+      "rating": 4,
+      "user": "u_kavitha",
+      "professional": "p_ravi",
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    },
+    {
+      "_id": "r3",
+      "title": "Extremely professional AC technician",
+      "text": "Mohamed resolved a complicated gas leakage issue that two other service technicians failed to repair.",
+      "rating": 5,
+      "user": "u_arun",
+      "professional": "p_mohamed",
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    },
+    {
+      "_id": "r4",
+      "title": "Prompt electrical wiring repairs",
+      "text": "Prompt response and quickly fixed our home inverter backup wiring issue.",
+      "rating": 5,
+      "user": "u_deepak",
+      "professional": "p_suresh",
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    },
+    {
+      "_id": "r5",
+      "title": "Superb math teacher",
+      "text": "Meera has been tutoring our son for 3 months now. His grades in math have improved from C to A.",
+      "rating": 5,
+      "user": "u_kavitha",
+      "professional": "p_meera",
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    },
+    {
+      "_id": "r6",
+      "title": "Quick screen replacement",
+      "text": "Replaced my cracked iPhone screen in less than an hour. The display feels as good as original.",
+      "rating": 4,
+      "user": "u_deepak",
+      "professional": "p_vikram",
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    }
+  ],
+  "bookings": [
+    {
+      "_id": "b1",
+      "user": "u_arun",
+      "professional": "p_ravi",
+      "serviceType": "Plumber",
+      "date": "2026-10-20T00:00:00.000Z",
+      "time": "09:00 AM",
+      "status": "confirmed",
+      "notes": "Leakage under sink",
+      "totalAmount": 350,
+      "paymentStatus": "pending",
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    },
+    {
+      "_id": "b2",
+      "user": "u_kavitha",
+      "professional": "p_mohamed",
+      "serviceType": "AC Technician",
+      "date": "2026-10-22T00:00:00.000Z",
+      "time": "11:30 AM",
+      "status": "pending",
+      "notes": "General servicing",
+      "totalAmount": 500,
+      "paymentStatus": "pending",
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    },
+    {
+      "_id": "b_1781853455584",
+      "user": "u_1781853309647",
+      "professional": "p_priya",
+      "serviceType": "House Cleaner",
+      "date": "2026-06-27T00:00:00.000Z",
+      "time": "11:30 AM",
+      "notes": "",
+      "totalAmount": 400,
+      "status": "pending",
+      "paymentStatus": "pending",
+      "createdAt": "2026-06-19T07:17:35.584Z"
+    }
+  ],
+  "notifications": [
+    {
+      "_id": "n1",
+      "user": "u_arun",
+      "title": "Booking Confirmed",
+      "message": "Your booking request for Plumber has been accepted.",
+      "type": "booking",
+      "read": false,
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    },
+    {
+      "_id": "n2",
+      "user": "u_ravi",
+      "title": "New Booking Request",
+      "message": "You have received a booking request from Arun Kumar.",
+      "type": "booking",
+      "read": false,
+      "createdAt": "2026-06-19T07:06:40.268Z"
+    },
+    {
+      "_id": "n_email_1781853309649",
+      "user": "u_1781853309647",
+      "title": "Welcome to NammaService!",
+      "message": "Hello sowmiya,\n\nYour account has been registered successfully. You can now search and book verified local service professionals near you!",
+      "type": "system",
+      "read": true,
+      "createdAt": "2026-06-19T07:15:09.649Z"
+    },
+    {
+      "_id": "n_1781853455586",
+      "user": "u_priya",
+      "title": "New Booking Request",
+      "message": "You have received a booking request for House Cleaner from sowmiya on 27/6/2026 at 11:30 AM.",
+      "type": "booking",
+      "read": false,
+      "createdAt": "2026-06-19T07:17:35.606Z"
+    },
+    {
+      "_id": "n_email_1781853455608",
+      "user": "u_priya",
+      "title": "New Booking Request Received",
+      "message": "Hello Priya Sharma,\n\nYou have received a new booking request for House Cleaner from sowmiya on 27/6/2026 at 11:30 AM.\n\nPlease accept/decline this in your Dashboard.",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-19T07:17:35.608Z"
+    },
+    {
+      "_id": "n_email_1781853461762",
+      "user": "u_1781853309647",
+      "title": "Booking Request Submitted Successfully",
+      "message": "Hello sowmiya,\n\nYour booking request for House Cleaner with Priya Sharma on 27/6/2026 at 11:30 AM has been sent.\n\nWe will notify you as soon as they confirm.",
+      "type": "system",
+      "read": true,
+      "createdAt": "2026-06-19T07:17:41.762Z"
+    },
+    {
+      "_id": "n_email_1781853632618",
+      "user": "u_1781853309647",
+      "title": "Security Alert: New Login Detected",
+      "message": "Hello sowmiya,\n\nA new login was detected on your NammaService account. If this was not you, please secure your credentials immediately.",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-19T07:20:32.618Z"
+    },
+    {
+      "_id": "n_email_1781854743132",
+      "user": "u_1781853309647",
+      "title": "Security Alert: New Login Detected",
+      "message": "Hello sowmiya,\n\nA new login was detected on your NammaService account. If this was not you, please secure your credentials immediately.",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-19T07:39:03.132Z"
+    },
+    {
+      "_id": "n_email_1781857161321",
+      "user": 1,
+      "title": "Security Alert: New Login Detected",
+      "message": "Hello Admin NammaService,\n\nA new login was detected on your NammaService account. If this was not you, please secure your credentials immediately.",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-19T08:19:21.321Z"
+    },
+    {
+      "_id": "n_email_1781857245184",
+      "user": 2,
+      "title": "Welcome to NammaService!",
+      "message": "Hello M Kabilan,\n\nYour account has been registered successfully. You can now search and book verified local service professionals near you!",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-19T08:20:45.184Z"
+    },
+    {
+      "_id": "n_email_1781857317870",
+      "user": 1,
+      "title": "Security Alert: New Login Detected",
+      "message": "Hello Admin NammaService,\n\nA new login was detected on your NammaService account. If this was not you, please secure your credentials immediately.",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-19T08:21:57.870Z"
+    },
+    {
+      "_id": "n_email_1781857504817",
+      "user": 2,
+      "title": "NammaService Password Reset Request",
+      "message": "Hello M Kabilan,\n\nYou requested a password reset. Please click the link below to set a new password:\n\nhttp://localhost:5173/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzgxODU3NTA0LCJleHAiOjE3ODQ0NDk1MDR9.QjT29NHyC-9dzSHHTK9GIg2cI1ns5PuSfr0n-fz3BCo\n\nIf you did not request this, please ignore this email.",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-19T08:25:04.817Z"
+    },
+    {
+      "_id": "n_email_1781857602377",
+      "user": 2,
+      "title": "Security Alert: New Login Detected",
+      "message": "Hello M Kabilan,\n\nA new login was detected on your NammaService account. If this was not you, please secure your credentials immediately.",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-19T08:26:42.377Z"
+    },
+    {
+      "_id": "n_email_1782040008108",
+      "user": 2,
+      "title": "NammaService Password Reset Request",
+      "message": "Hello M Kabilan,\n\nYou requested a password reset. Please click the link below to set a new password:\n\nhttp://localhost:5173/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzgyMDQwMDA4LCJleHAiOjE3ODQ2MzIwMDh9.svQoy5T2Mepvfs13Xx9nCZ2BPSritZaE-ssGC3fL_gQ\n\nIf you did not request this, please ignore this email.",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-21T11:06:48.108Z"
+    },
+    {
+      "_id": "n_email_1782040009410",
+      "user": 2,
+      "title": "NammaService Password Reset Request",
+      "message": "Hello M Kabilan,\n\nYou requested a password reset. Please click the link below to set a new password:\n\nhttp://localhost:5173/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzgyMDQwMDA5LCJleHAiOjE3ODQ2MzIwMDl9.n7I-1MUxArfAFuaB9t2Fz50B310NoB1QUii6A3yeytY\n\nIf you did not request this, please ignore this email.",
+      "type": "system",
+      "read": false,
+      "createdAt": "2026-06-21T11:06:49.410Z"
+    }
+  ],
+  "savedProfessionals": [
+    {
+      "_id": "sp1",
+      "user": "u_arun",
+      "professional": "p_ravi"
+    }
+  ]
+}

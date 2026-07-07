@@ -1,0 +1,69 @@
+require('dotenv').config();
+const db = require('./config/db');
+
+async function startServer() {
+  // 1. Connect to Database first
+  await db.connectDB();
+
+  // 2. Sync Models to auto-create MySQL tables or SQLite tables
+  try {
+    // This imports all models and sets up associations
+    require('./models');
+    await db.sequelize.sync({ FORCE: true });
+    console.log("Database models synchronized and tables verified.");
+  } catch (err) {
+    console.error("Database synchronization failed:", err);
+    process.exit(1);
+  }
+
+  // 3. Now require express and local app dependencies after DB is ready
+  const express = require('express');
+  const cors = require('cors');
+  const autoSeed = require('./utils/autoSeed');
+
+  const app = express();
+
+  // Middleware
+  app.use(cors());
+  app.use(express.json({ limit: '10mb' }));
+  app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
+  // Routes
+  app.use('/api/auth', require('./routes/authRoutes'));
+  app.post('/api/send-otp', require('./controllers/authController').sendOtp);
+  app.post('/api/verify-otp', require('./controllers/authController').verifyOtp);
+  app.post('/send-otp', require('./controllers/authController').sendOtp);
+  app.post('/verify-otp', require('./controllers/authController').verifyOtp);
+  app.use('/api/professionals', require('./routes/professionalRoutes'));
+  app.use('/api/services', require('./routes/serviceRoutes'));
+  app.use('/api/bookings', require('./routes/bookingRoutes'));
+  app.use('/api/reviews', require('./routes/reviewRoutes'));
+  app.use('/api/notifications', require('./routes/notificationRoutes'));
+  app.use('/api/saved-professionals', require('./routes/savedProfessionalRoutes'));
+
+  app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'success', message: 'NammaService API is running' });
+  });
+
+  // Error Handling Middleware
+  app.use((err, req, res, next) => {
+    const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+    res.status(statusCode).json({
+      message: err.message,
+      stack: process.env.NODE_ENV === 'production' ? null : err.stack,
+    });
+  });
+
+  // 4. Run auto-seeding if necessary
+  await autoSeed();
+
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+  });
+}
+
+startServer().catch(err => {
+  console.error("Fatal error starting server:", err);
+  process.exit(1);
+});
