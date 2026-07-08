@@ -26,11 +26,26 @@ async function startServer() {
 
   // Middleware
   const corsOptions = {
-    origin: [
-      'https://nammaservice-app.web.app',
-      'http://localhost:5173',
-      'http://localhost:5174'
-    ],
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      
+      const allowedOrigins = [
+        'https://nammaservice-app.web.app',
+        'http://localhost:5173',
+        'http://localhost:5174'
+      ];
+      
+      const isAllowed = allowedOrigins.includes(origin) || 
+                        origin.endsWith('.vercel.app') || 
+                        origin.includes('localhost');
+                        
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        console.warn(`CORS blocked request from origin: ${origin}`);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
     optionsSuccessStatus: 200
   };
