@@ -1,6 +1,8 @@
 require('dotenv').config();
 const db = require('./config/db');
 
+console.log("🔍 Active Environment Variables Keys:", Object.keys(process.env).filter(k => !k.toLowerCase().includes('pass') && !k.toLowerCase().includes('secret') && !k.toLowerCase().includes('key')));
+
 async function startServer() {
   // 1. Connect to Database first
   await db.connectDB();
