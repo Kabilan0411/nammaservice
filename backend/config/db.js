@@ -7,7 +7,7 @@ let sequelize;
 let isOfflineMode = false;
 
 const connectDB = async () => {
-  const host = process.env.DB_HOST || 'mysql.railway.internal';
+  const host = process.env.DB_HOST || 'reseau.proxy.rlwy.net';
   const port = process.env.DB_PORT || 3306;
   const user = process.env.DB_USER || 'root';
   const password = process.env.DB_PASS || '';
