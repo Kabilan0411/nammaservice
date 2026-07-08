@@ -7,11 +7,12 @@ let sequelize;
 let isOfflineMode = false;
 
 const connectDB = async () => {
-  const host = process.env.DB_HOST || 'reseau.proxy.rlwy.net';
-  const port = process.env.DB_PORT || 3306;
-  const user = process.env.DB_USER || 'root';
-  const password = process.env.DB_PASS || '';
-  const database = process.env.DB_NAME || 'nammaservice';
+  // Support both standard DB_ prefixes and Railway-default MYSQL prefixes
+  const host = process.env.DB_HOST || process.env.MYSQLHOST || '127.0.0.1';
+  const port = process.env.DB_PORT || process.env.MYSQLPORT || 3306;
+  const user = process.env.DB_USER || process.env.MYSQLUSER || 'root';
+  const password = process.env.DB_PASS || process.env.MYSQLPASSWORD || '';
+  const database = process.env.DB_NAME || process.env.MYSQLDATABASE || 'nammaservice';
   const isProduction = process.env.NODE_ENV === 'production';
 
   console.log(`\n==================================================`);
@@ -79,7 +80,7 @@ const connectDB = async () => {
     });
 
     await sequelize.authenticate();
-    console.log(`MySQL Connected successfully to database: ${database}`);
+    console.log("MySQL Connected successfully to database: " + database);
     return;
   } catch (error) {
     console.warn(`MySQL local connection failed: ${error.message}. Falling back to SQLite...`);
