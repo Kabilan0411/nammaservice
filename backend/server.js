@@ -7,9 +7,8 @@ async function startServer() {
 
   // 2. Sync Models to auto-create MySQL tables or SQLite tables
   try {
-    // This imports all models and sets up associations
     require('./models');
-    await db.sequelize.sync({ FORCE: true });
+    await db.sequelize.sync({ alter: true });
     console.log("Database models synchronized and tables verified.");
   } catch (err) {
     console.error("Database synchronization failed:", err);
@@ -24,7 +23,16 @@ async function startServer() {
   const app = express();
 
   // Middleware
-  app.use(cors());
+  const corsOptions = {
+    origin: [
+      'https://nammaservice-app.web.app',
+      'http://localhost:5173',
+      'http://localhost:5174'
+    ],
+    credentials: true,
+    optionsSuccessStatus: 200
+  };
+  app.use(cors(corsOptions));
   app.use(express.json({ limit: '10mb' }));
   app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
