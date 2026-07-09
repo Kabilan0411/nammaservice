@@ -68,7 +68,7 @@ const sendEmail = async ({ to, subject, text, html, userId }) => {
     }
 
     const resend = new Resend(apiKey);
-    const fromEmail = process.env.EMAIL_FROM || 'onboarding@resend.dev';
+    const fromEmail = process.env.EMAIL_FROM || 'nammaservice.in@gmail.com';
 
     const response = await resend.emails.send({
       from: `NammaService <${fromEmail}>`,

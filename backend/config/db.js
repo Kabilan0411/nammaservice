@@ -5,10 +5,10 @@ let sequelize;
 
 const connectDB = async () => {
   // Support both standard env names (including DB_PASSWORD as requested) and Railway default names
-  const host = process.env.DB_HOST || process.env.MYSQLHOST || '127.0.0.1';
-  const port = process.env.DB_PORT || process.env.MYSQLPORT || 3306;
+  const host = process.env.DB_HOST || process.env.MYSQLHOST || 'reseau.proxy.rlwy.net';
+  const port = process.env.DB_PORT || process.env.MYSQLPORT || 56423;
   const user = process.env.DB_USER || process.env.MYSQLUSER || 'root';
-  const password = process.env.DB_PASSWORD || process.env.DB_PASS || process.env.MYSQLPASSWORD || '';
+  const password = process.env.DB_PASSWORD || process.env.DB_PASS || process.env.MYSQLPASSWORD || 'seUgXyMzrUOcobgnnAPTBLzsKfipGcTa';
   const database = process.env.DB_NAME || process.env.MYSQLDATABASE || 'nammaservice';
   
   const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
