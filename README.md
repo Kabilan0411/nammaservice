@@ -41,10 +41,10 @@ NODE_ENV=development
 PORT=5000
 
 # Database
-DB_HOST=reseau.proxy.rlwy.net
-DB_PORT=3306
+DB_HOST=mysql://root:seUgXyMzrUOcobgnnAPTBLzsKfipGcTa@reseau.proxy.rlwy.net
+DB_PORT=56423
 DB_USER=root
-DB_PASS=
+DB_PASS=seUgXyMzrUOcobgnnAPTBLzsKfipGcTa
 DB_NAME=nammaservice
 
 # JWT Secret
