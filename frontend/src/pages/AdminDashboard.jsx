@@ -33,7 +33,7 @@ const AdminDashboard = () => {
       setProfessionals(prosRes.data.data);
 
       // Load all users directly from the backend admin route
-      const usersRes = await api.get('/auth/users');
+      const usersRes = await api.get('/api/auth/users');
       setUsers(usersRes.data.data);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to retrieve administrative records');
@@ -58,7 +58,7 @@ const AdminDashboard = () => {
     }
     if (window.confirm("Are you sure you want to remove this user from the system?")) {
       try {
-        await api.delete(`/auth/users/${userId}`);
+        await api.delete(`/api/auth/users/${userId}`);
         setUsers(prev => prev.filter(u => u._id !== userId && u.id !== userId));
         alert("User removed successfully.");
       } catch (err) {

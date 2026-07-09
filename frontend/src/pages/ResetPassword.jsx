@@ -32,7 +32,7 @@ const ResetPassword = () => {
 
     try {
       setLoading(true);
-      await api.post(`/auth/reset-password/${token}`, { password });
+      await api.post(`/api/auth/reset-password/${token}`, { password });
       setSuccess('Your password has been reset successfully!');
       
       // Auto redirect to login after 3 seconds

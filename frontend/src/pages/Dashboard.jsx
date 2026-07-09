@@ -111,7 +111,7 @@ const Dashboard = () => {
       if (profilePassword) {
         updateData.password = profilePassword;
       }
-      const res = await api.put('/auth/profile', updateData);
+      const res = await api.put('/api/auth/profile', updateData);
       localStorage.setItem('token', res.data.token);
       setUser(res.data);
       setProfilePassword('');
