@@ -41,7 +41,7 @@ NODE_ENV=development
 PORT=5000
 
 # Database
-DB_HOST=mysql://root:seUgXyMzrUOcobgnnAPTBLzsKfipGcTa@reseau.proxy.rlwy.net
+DB_HOST=reseau.proxy.rlwy.net
 DB_PORT=56423
 DB_USER=root
 DB_PASS=seUgXyMzrUOcobgnnAPTBLzsKfipGcTa

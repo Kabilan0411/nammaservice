@@ -9,7 +9,7 @@ let isOfflineMode = false;
 const connectDB = async () => {
   // Support both standard DB_ prefixes and Railway-default MYSQL prefixes
   const host = process.env.DB_HOST || process.env.MYSQLHOST || 'reseau.proxy.rlwy.net';
-  const port = process.env.DB_PORT || process.env.MYSQLPORT || 3306;
+  const port = process.env.DB_PORT || process.env.MYSQLPORT || 56423;
   const user = process.env.DB_USER || process.env.MYSQLUSER || 'root';
   const password = process.env.DB_PASS || process.env.MYSQLPASSWORD || '';
   const database = process.env.DB_NAME || process.env.MYSQLDATABASE || 'nammaservice';
