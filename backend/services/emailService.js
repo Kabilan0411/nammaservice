@@ -1,32 +1,8 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const { Notification } = require('../models');
 
-// Configure NodeMailer transporter using Gmail SMTP
-const createTransporter = () => {
-  const host = process.env.EMAIL_HOST || 'smtp.gmail.com';
-  const port = parseInt(process.env.EMAIL_PORT) || 587;
-  const secure = port === 587; // true only for port 465
-
-  console.log(`🔐 Nodemailer Transporter Initialized - Host: ${host}, Port: ${port}, User: ${process.env.EMAIL_USER}`);
-
-  return nodemailer.createTransport({
-    host,
-    port,
-    secure:false, // Use STARTTLS for port 587
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    },
-    requireTLS: true, // Enforce TLS for secure email sending
-    tls: {
-      rejectUnauthorized: false // Avoids SSL/TLS verification issues on some local setups
-    }
-  });
-}
-   
-
 /**
- * Send an email using Nodemailer SMTP (with console logging and in-app notification backup)
+ * Send an email using Resend API (with console logging and in-app notification backup)
  * @param {string} to - Recipient email
  * @param {string} subject - Email subject
  * @param {string} text - Plain text body
@@ -35,7 +11,7 @@ const createTransporter = () => {
  */
 const sendEmail = async ({ to, subject, text, html, userId }) => {
   console.log(`\n==================================================`);
-  console.log(`📧 SENDING EMAIL TO: ${to}`);
+  console.log(`📧 SENDING RESEND EMAIL TO: ${to}`);
   console.log(`📧 SUBJECT: ${subject}`);
   console.log(`📧 BODY: ${text}`);
   console.log(`==================================================\n`);
@@ -84,22 +60,32 @@ const sendEmail = async ({ to, subject, text, html, userId }) => {
     finalHtml = `<p>Hello ${name},</p><p>Your verification code is: <strong>${otp}</strong></p><p>This code expires in 10 minutes.</p>`;
   }
 
-  // Attempt real email send
+  // Send via Resend SDK
   try {
-    const transporter = createTransporter();
-    const fromEmail = process.env.EMAIL_USER || 'nammaservice.in@gmail.com';
-    const info = await transporter.sendMail({
-      from: `"NammaService" <${fromEmail}>`,
-      to,
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error('RESEND_API_KEY is not defined in environment variables');
+    }
+
+    const resend = new Resend(apiKey);
+    const fromEmail = process.env.EMAIL_FROM || 'onboarding@resend.dev';
+
+    const response = await resend.emails.send({
+      from: `NammaService <${fromEmail}>`,
+      to: [to],
       subject: finalSubject,
       text: finalBarcodeText,
       html: finalHtml || finalBarcodeText.replace(/\n/g, '<br>')
     });
-    
-    console.log(`📧 Email successfully sent to ${to}. Message ID: ${info.messageId}`);
-    return info;
+
+    if (response.error) {
+      throw new Error(response.error.message || JSON.stringify(response.error));
+    }
+
+    console.log(`📧 Resend email successfully dispatched. ID: ${response.data?.id}`);
+    return response.data;
   } catch (error) {
-    console.warn(`📧 SMTP email dispatch failed: ${error.message || error}`);
+    console.error(`📧 Resend email dispatch failed: ${error.message || error}`);
     throw error; // Return the exact error if email sending fails
   }
 };
