@@ -5,23 +5,25 @@ const { Notification } = require('../models');
 const createTransporter = () => {
   const host = process.env.EMAIL_HOST || 'smtp.gmail.com';
   const port = parseInt(process.env.EMAIL_PORT) || 587;
-  const secure = port === 465; // true only for port 465
+  const secure = port === 587; // true only for port 465
 
   console.log(`🔐 Nodemailer Transporter Initialized - Host: ${host}, Port: ${port}, User: ${process.env.EMAIL_USER}`);
 
   return nodemailer.createTransport({
     host,
     port,
-    secure,
+    secure:false, // Use STARTTLS for port 587
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS
     },
+    requireTLS: true, // Enforce TLS for secure email sending
     tls: {
       rejectUnauthorized: false // Avoids SSL/TLS verification issues on some local setups
     }
   });
-};
+}
+   
 
 /**
  * Send an email using Nodemailer SMTP (with console logging and in-app notification backup)
