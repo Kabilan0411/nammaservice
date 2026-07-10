@@ -25,11 +25,11 @@ const AdminDashboard = () => {
       setError('');
       
       // Load all bookings
-      const bookingsRes = await api.get('/bookings');
+      const bookingsRes = await api.get('/api/bookings');
       setBookings(bookingsRes.data.data);
 
       // Load all professionals
-      const prosRes = await api.get('/professionals');
+      const prosRes = await api.get('/api/professionals');
       setProfessionals(prosRes.data.data);
 
       // Load all users directly from the backend admin route
