@@ -110,8 +110,9 @@ const sendEmail = async ({ to, subject, text, html, userId }) => {
 
   // Send via Brevo HTTPS API
   try {
-    const fromEmail = process.env.EMAIL_FROM;
-    const apiKey = process.env.BREVO_API_KEY || process.env.SMTP_PASS;
+    const fromEmail = (process.env.EMAIL_FROM || '').trim();
+    const rawApiKey = process.env.BREVO_API_KEY || process.env.SMTP_PASS;
+    const apiKey = rawApiKey ? rawApiKey.trim() : '';
 
     if (!fromEmail) {
       throw new Error('EMAIL_FROM is not defined in environment variables');

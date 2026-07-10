@@ -47,8 +47,9 @@ const sendEmailViaBrevoAPI = (options, apiKey) => {
 };
 
 const runTest = async () => {
-  const fromEmail = process.env.EMAIL_FROM;
-  const apiKey = process.env.BREVO_API_KEY || process.env.SMTP_PASS;
+  const fromEmail = (process.env.EMAIL_FROM || '').trim();
+  const rawApiKey = process.env.BREVO_API_KEY || process.env.SMTP_PASS;
+  const apiKey = rawApiKey ? rawApiKey.trim() : '';
 
   console.log("-----------------------------------------");
   console.log("EMAIL_FROM:", fromEmail);
