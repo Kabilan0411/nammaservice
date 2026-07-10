@@ -1,8 +1,8 @@
-const { Resend } = require('resend');
+const nodemailer = require('nodemailer');
 const { Notification } = require('../models');
 
 /**
- * Send an email using Resend API (with console logging and in-app notification backup)
+ * Send an email using Nodemailer with Brevo SMTP (with console logging and in-app notification backup)
  * @param {string} to - Recipient email
  * @param {string} subject - Email subject
  * @param {string} text - Plain text body
@@ -11,7 +11,7 @@ const { Notification } = require('../models');
  */
 const sendEmail = async ({ to, subject, text, html, userId }) => {
   console.log(`\n==================================================`);
-  console.log(`📧 SENDING RESEND EMAIL TO: ${to}`);
+  console.log(`📧 SENDING BREVO SMTP EMAIL TO: ${to}`);
   console.log(`📧 SUBJECT: ${subject}`);
   console.log(`📧 BODY: ${text}`);
   console.log(`==================================================\n`);
@@ -60,33 +60,37 @@ const sendEmail = async ({ to, subject, text, html, userId }) => {
     finalHtml = `<p>Hello ${name},</p><p>Your verification code is: <strong>${otp}</strong></p><p>This code expires in 10 minutes.</p>`;
   }
 
-  // Send via Resend SDK
+  // Send via Nodemailer using Brevo SMTP
   try {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      throw new Error('RESEND_API_KEY is not defined in environment variables');
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      }
+    });
+
+    const fromEmail = process.env.EMAIL_FROM;
+    if (!fromEmail) {
+      throw new Error('EMAIL_FROM is not defined in environment variables');
     }
 
-    const resend = new Resend(apiKey);
-    const fromEmail = process.env.EMAIL_FROM || 'nammaservice.in@gmail.com';
-
-    const response = await resend.emails.send({
+    const mailOptions = {
       from: `NammaService <${fromEmail}>`,
-      to: [to],
+      to,
       subject: finalSubject,
       text: finalBarcodeText,
       html: finalHtml || finalBarcodeText.replace(/\n/g, '<br>')
-    });
+    };
 
-    if (response.error) {
-      throw new Error(response.error.message || JSON.stringify(response.error));
-    }
-
-    console.log(`📧 Resend email successfully dispatched. ID: ${response.data?.id}`);
-    return response.data;
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Brevo SMTP email sent successfully");
+    return info;
   } catch (error) {
-    console.error(`📧 Resend email dispatch failed: ${error.message || error}`);
-    throw error; // Return the exact error if email sending fails
+    console.error("Brevo SMTP email dispatch failed:", error.message || error);
+    throw error;
   }
 };
 

@@ -21,7 +21,6 @@
     "multer": "^2.2.0",
     "mysql2": "^3.22.5",
     "nodemailer": "^9.0.1",
-    "resend": "^6.17.2",
     "sequelize": "^6.37.8"
   }
 }
