@@ -57,7 +57,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 # Gmail SMTP Setup (App Password Required)
 EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=465
+EMAIL_PORT=587
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_gmail_app_password
 

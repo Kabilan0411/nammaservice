@@ -41,10 +41,10 @@ const connectDB = async () => {
       });
 
       await sequelize.authenticate();
-      console.log(`🎉 MySQL Database Connected successfully to database: ${database}`);
+      console.log(` MySQL Database Connected successfully to database: ${database}`);
       return;
     } catch (error) {
-      console.error(`❌ Production Database Connection Failed: ${error.message}`);
+      console.error(` Production Database Connection Failed: ${error.message}`);
       process.exit(1);
     }
   }
