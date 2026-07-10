@@ -15,6 +15,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import VerifyEmail from './pages/VerifyEmail';
 import Chatbot from './components/Chatbot';
 import { AuthContext } from './context/AuthContext';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const { user, loading } = useContext(AuthContext);
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="d-flex flex-column min-vh-100">
         {user && <Navbar />}
         <main className="flex-grow-1">

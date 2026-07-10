@@ -33,6 +33,7 @@ const Dashboard = () => {
   // Partner Profile form
   const [partnerTitle, setPartnerTitle] = useState('');
   const [partnerServiceType, setPartnerServiceType] = useState('Plumber');
+  const [customServiceType, setCustomServiceType] = useState('');
   const [partnerBio, setPartnerBio] = useState('');
   const [partnerPrice, setPartnerPrice] = useState('');
   const [partnerExp, setPartnerExp] = useState('');
@@ -71,7 +72,14 @@ const Dashboard = () => {
         
         // Populate partner form fields
         setPartnerTitle(pData.title || '');
-        setPartnerServiceType(pData.serviceType || 'Plumber');
+        const standardCategories = ['Plumber', 'Electrician', 'Carpenter', 'AC Technician', 'Painter', 'House Cleaner', 'RO Technician', 'Laptop/Mobile Repair', 'Home Tutor'];
+        if (pData.serviceType && !standardCategories.includes(pData.serviceType)) {
+          setPartnerServiceType('Other');
+          setCustomServiceType(pData.serviceType);
+        } else {
+          setPartnerServiceType(pData.serviceType || 'Plumber');
+          setCustomServiceType('');
+        }
         setPartnerBio(pData.bio || '');
         setPartnerPrice(pData.hourlyRate || '');
         setPartnerExp(pData.experience || '');
@@ -142,10 +150,12 @@ const Dashboard = () => {
     setPartnerSuccess('');
     setPartnerError('');
     
+    const finalServiceType = partnerServiceType === 'Other' ? customServiceType : partnerServiceType;
+
     const bodyData = {
       title: partnerTitle,
       bio: partnerBio,
-      serviceType: partnerServiceType,
+      serviceType: finalServiceType,
       experience: parseInt(partnerExp),
       hourlyRate: parseFloat(partnerPrice),
       skills: partnerSkills.split(',').map(s => s.trim()).filter(Boolean),
@@ -729,6 +739,19 @@ const Dashboard = () => {
                       <option value="Other">Other</option>
                     </select>
                   </div>
+                  {partnerServiceType === 'Other' && (
+                    <div className="col-md-6">
+                      <label className="form-label small fw-semibold">Specify Your Service</label>
+                      <input 
+                        type="text" 
+                        className="form-control form-control-premium" 
+                        placeholder={"Example:\nAC Gas Filling\nSolar Panel Technician\nRO Water Purifier Repair\nLaptop Chip Level Repair\nPainting Contractor"}
+                        value={customServiceType} 
+                        onChange={(e) => setCustomServiceType(e.target.value)} 
+                        required={partnerServiceType === 'Other'} 
+                      />
+                    </div>
+                  )}
                   <div className="col-md-6">
                     <label className="form-label small fw-semibold">Service Hourly Rate (₹)</label>
                     <input 

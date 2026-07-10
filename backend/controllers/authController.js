@@ -233,7 +233,7 @@ const forgotPassword = async (req, res, next) => {
     }
 
     const token = generateToken(user.id);
-    const resetUrl = `http://localhost:5173/reset-password/${token}`;
+    const resetUrl = `https://nammaservice-app.web.app/reset-password/${token}`;
 
     // Send reset link to email (non-blocking)
     sendEmail({

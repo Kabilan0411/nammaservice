@@ -1,19 +1,61 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useState, useEffect, useRef } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUserCircle, FaSearch, FaDashcube, FaSignOutAlt } from 'react-icons/fa';
 import { AuthContext } from '../context/AuthContext';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef(null);
 
   const handleLogout = () => {
+    setIsOpen(false);
     logout();
     navigate('/login');
   };
 
+  // Close menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+
+  // Close menu on outside click, escape key, and scroll
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    const handleScroll = () => {
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isOpen]);
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light navbar-custom fixed-top py-3 glass-premium shadow-sm">
+    <nav ref={navRef} className="navbar navbar-expand-lg navbar-light navbar-custom fixed-top py-3 glass-premium shadow-sm">
       <div className="container">
         <Link className="navbar-brand fw-bold fs-4 text-primary d-flex align-items-center" to="/" style={{ letterSpacing: '-0.5px' }}>
           Namma<span className="text-accent">Service</span>
@@ -22,16 +64,15 @@ const Navbar = () => {
         <button 
           className="navbar-toggler border-0 shadow-none" 
           type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarNav" 
+          onClick={() => setIsOpen(!isOpen)}
           aria-controls="navbarNav" 
-          aria-expanded="false" 
+          aria-expanded={isOpen} 
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
         
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-2">
             <li className="nav-item">
               <Link className="nav-link fw-medium px-3 d-flex align-items-center gap-1" to="/search">
