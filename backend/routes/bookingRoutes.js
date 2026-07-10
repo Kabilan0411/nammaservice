@@ -1,4 +1,5 @@
 const express = require('express');
+console.log("✈️ bookingRoutes.js file successfully loaded!");
 const router = express.Router();
 const { getBookings, createBooking, updateBookingStatus } = require('../controllers/bookingController');
 const { protect } = require('../middleware/authMiddleware');

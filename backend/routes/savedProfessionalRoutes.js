@@ -1,4 +1,5 @@
 const express = require('express');
+console.log("✈️ savedProfessionalRoutes.js file successfully loaded!");
 const router = express.Router();
 const { 
   getSavedProfessionals, 

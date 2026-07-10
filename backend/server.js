@@ -54,17 +54,41 @@ async function startServer() {
   app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
   // Routes
-  app.use('/api/auth', require('./routes/authRoutes'));
+  const authRoutes = require('./routes/authRoutes');
+  const professionalRoutes = require('./routes/professionalRoutes');
+  const serviceRoutes = require('./routes/serviceRoutes');
+  const bookingRoutes = require('./routes/bookingRoutes');
+  const reviewRoutes = require('./routes/reviewRoutes');
+  const notificationRoutes = require('./routes/notificationRoutes');
+  const savedProfessionalRoutes = require('./routes/savedProfessionalRoutes');
+
+  // Mount under both '/api' and '/' prefixes to guarantee absolute compatibility
+  // with any frontend Axios client baseURL configuration
+  app.use('/api/auth', authRoutes);
+  app.use('/auth', authRoutes);
+
   app.post('/api/send-otp', require('./controllers/authController').sendOtp);
   app.post('/api/verify-otp', require('./controllers/authController').verifyOtp);
   app.post('/send-otp', require('./controllers/authController').sendOtp);
   app.post('/verify-otp', require('./controllers/authController').verifyOtp);
-  app.use('/api/professionals', require('./routes/professionalRoutes'));
-  app.use('/api/services', require('./routes/serviceRoutes'));
-  app.use('/api/bookings', require('./routes/bookingRoutes'));
-  app.use('/api/reviews', require('./routes/reviewRoutes'));
-  app.use('/api/notifications', require('./routes/notificationRoutes'));
-  app.use('/api/saved-professionals', require('./routes/savedProfessionalRoutes'));
+
+  app.use('/api/professionals', professionalRoutes);
+  app.use('/professionals', professionalRoutes);
+
+  app.use('/api/services', serviceRoutes);
+  app.use('/services', serviceRoutes);
+
+  app.use('/api/bookings', bookingRoutes);
+  app.use('/bookings', bookingRoutes);
+
+  app.use('/api/reviews', reviewRoutes);
+  app.use('/reviews', reviewRoutes);
+
+  app.use('/api/notifications', notificationRoutes);
+  app.use('/notifications', notificationRoutes);
+
+  app.use('/api/saved-professionals', savedProfessionalRoutes);
+  app.use('/saved-professionals', savedProfessionalRoutes);
 
   app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'success', message: 'NammaService API is running' });
