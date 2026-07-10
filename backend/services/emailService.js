@@ -4,7 +4,7 @@ const { Notification } = require('../models');
 /**
  * Helper to dispatch email via Brevo REST API (HTTPS / Port 443)
  */
-const sendEmailViaBrevoAPI = (options) => {
+const sendEmailViaBrevoAPI = (options, apiKey) => {
   return new Promise((resolve, reject) => {
     const data = JSON.stringify(options);
 
@@ -15,7 +15,7 @@ const sendEmailViaBrevoAPI = (options) => {
       method: 'POST',
       headers: {
         'accept': 'application/json',
-        'api-key': process.env.SMTP_PASS, // Using SMTP_PASS as Brevo API Key
+        'api-key': apiKey,
         'content-type': 'application/json',
         'content-length': Buffer.byteLength(data)
       }
@@ -111,13 +111,13 @@ const sendEmail = async ({ to, subject, text, html, userId }) => {
   // Send via Brevo HTTPS API
   try {
     const fromEmail = process.env.EMAIL_FROM;
-    const apiKey = process.env.SMTP_PASS;
+    const apiKey = process.env.BREVO_API_KEY || process.env.SMTP_PASS;
 
     if (!fromEmail) {
       throw new Error('EMAIL_FROM is not defined in environment variables');
     }
     if (!apiKey) {
-      throw new Error('SMTP_PASS/Brevo API Key is not defined in environment variables');
+      throw new Error('Brevo API Key (BREVO_API_KEY or SMTP_PASS) is not defined in environment variables');
     }
 
     const payload = {
@@ -133,7 +133,7 @@ const sendEmail = async ({ to, subject, text, html, userId }) => {
       htmlContent: finalHtml || finalBarcodeText.replace(/\n/g, '<br>')
     };
 
-    const response = await sendEmailViaBrevoAPI(payload);
+    const response = await sendEmailViaBrevoAPI(payload, apiKey);
     console.log("Brevo HTTPS API email sent successfully");
     return response;
   } catch (error) {
