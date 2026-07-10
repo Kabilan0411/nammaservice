@@ -75,7 +75,7 @@ const sendEmail = async ({ to, subject, text, html, userId }) => {
     await transporter.verify();
     console.log("Brevo SMTP transporter verified successfully");
 
-    const fromEmail = process.env.EMAIL_FROM;'nammaservice.in@gmail.com'
+    const fromEmail = process.env.EMAIL_FROM ||'nammaservice.in@gmail.com'
     if (!fromEmail) {
       throw new Error('EMAIL_FROM is not defined in environment variables');
     }
