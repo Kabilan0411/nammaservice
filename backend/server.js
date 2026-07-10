@@ -10,7 +10,7 @@ async function startServer() {
   // 2. Sync Models to auto-create MySQL tables or SQLite tables
   try {
     require('./models');
-    await db.sequelize.sync({ alter: true });
+    await db.sequelize.sync();
     console.log("Database models synchronized and tables verified.");
   } catch (err) {
     console.error("Database synchronization failed:", err);
