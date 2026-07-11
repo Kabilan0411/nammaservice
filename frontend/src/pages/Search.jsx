@@ -4,6 +4,7 @@ import { FaStar, FaMapMarkerAlt, FaFilter, FaBriefcase, FaMoneyBillWave, FaHeart
 import Card from '../components/Card';
 import Button from '../components/Button';
 import SkeletonLoader from '../components/SkeletonLoader';
+import Avatar from '../components/Avatar';
 import api from '../utils/api';
 import { AuthContext } from '../context/AuthContext';
 
@@ -259,11 +260,11 @@ const Search = () => {
                     </button>
 
                     <div className="d-flex gap-3 flex-column flex-sm-row">
-                      <img 
-                        src={pro.user?.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} 
+                      <Avatar 
+                        src={pro.user?.avatar} 
                         alt={pro.user?.name} 
-                        className="rounded-circle object-fit-cover shadow-sm border border-2 border-accent" 
-                        style={{ width: '80px', height: '80px' }} 
+                        size={80}
+                        className="shadow-sm border-2 border-accent" 
                       />
                       <div className="flex-grow-1">
                         <div className="d-flex align-items-center gap-2 mb-1">
@@ -349,11 +350,10 @@ const Search = () => {
               {selectedProfessionalDetails && (
                 <div className="position-absolute bottom-0 start-50 translate-middle-x mb-4 w-100 px-3" style={{ zIndex: 10 }}>
                   <Card className="shadow-lg border-0 p-3 bg-white d-flex align-items-center gap-3 glass-premium" style={{ borderRadius: '12px', margin: '0 auto', maxWidth: '380px' }}>
-                    <img 
-                      src={selectedProfessionalDetails.user?.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} 
+                    <Avatar 
+                      src={selectedProfessionalDetails.user?.avatar} 
                       alt="Selected" 
-                      className="rounded-circle object-fit-cover border" 
-                      style={{ width: '50px', height: '50px' }} 
+                      size={50}
                     />
                     <div className="flex-grow-1 text-truncate" style={{ minWidth: 0 }}>
                       <h6 className="mb-0 fw-bold text-dark text-truncate">{selectedProfessionalDetails.user?.name}</h6>

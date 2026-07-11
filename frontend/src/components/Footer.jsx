@@ -4,15 +4,15 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaEnvelope, FaMapMar
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-custom text-white py-5 mt-auto border-top border-dark" style={{ borderTopWidth: '4px' }}>
-      <div className="container py-4">
-        <div className="row g-5">
+    <footer className="bg-primary-custom text-white py-4 mt-auto border-top border-dark" style={{ borderTopWidth: '4px' }}>
+      <div className="container py-2">
+        <div className="row g-4">
           {/* Brand & Description */}
           <div className="col-lg-4">
-            <h4 className="fw-bold mb-3 text-white" style={{ letterSpacing: '-0.5px' }}>
+            <h4 className="fw-bold mb-2 text-white" style={{ letterSpacing: '-0.5px' }}>
               Namma<span className="text-accent">Service</span>
             </h4>
-            <p className="footer-desc mb-4" style={{ fontSize: '0.9rem', lineHeight: '1.7' }}>
+            <p className="footer-desc mb-3" style={{ fontSize: '0.9rem', lineHeight: '1.7' }}>
               NammaService is a premium on-demand platform matching homeowners and businesses with trusted, background-checked local professionals. We deliver elite, guaranteed quality for plumbing, electronics, repairs, and tutoring.
             </p>
             <div className="d-flex gap-3">
@@ -33,7 +33,7 @@ const Footer = () => {
           
           {/* Quick Links */}
           <div className="col-md-6 col-lg-2">
-            <h6 className="text-uppercase fw-bold text-white mb-4" style={{ fontSize: '0.85rem', letterSpacing: '1px' }}>Company</h6>
+            <h6 className="text-uppercase fw-bold text-white mb-3" style={{ fontSize: '0.85rem', letterSpacing: '1px' }}>Company</h6>
             <ul className="list-unstyled">
               <li className="mb-2"><Link to="#" className="footer-link">About NammaService</Link></li>
               <li className="mb-2"><Link to="#" className="footer-link">Careers</Link></li>
@@ -45,7 +45,7 @@ const Footer = () => {
           
           {/* Services Quick Directory */}
           <div className="col-md-6 col-lg-3">
-            <h6 className="text-uppercase fw-bold text-white mb-4" style={{ fontSize: '0.85rem', letterSpacing: '1px' }}>Services Directory</h6>
+            <h6 className="text-uppercase fw-bold text-white mb-3" style={{ fontSize: '0.85rem', letterSpacing: '1px' }}>Services Directory</h6>
             <ul className="list-unstyled">
               <li className="mb-2"><Link to="/search?category=Plumber" className="footer-link">Professional Plumber</Link></li>
               <li className="mb-2"><Link to="/search?category=Electrician" className="footer-link">Licensed Electrician</Link></li>
@@ -58,8 +58,8 @@ const Footer = () => {
           
           {/* Contact Details & Newsletter */}
           <div className="col-lg-3">
-            <h6 className="text-uppercase fw-bold text-white mb-4" style={{ fontSize: '0.85rem', letterSpacing: '1px' }}>Contact Support</h6>
-            <ul className="list-unstyled text-white-50 mb-4" style={{ fontSize: '0.9rem' }}>
+            <h6 className="text-uppercase fw-bold text-white mb-3" style={{ fontSize: '0.85rem', letterSpacing: '1px' }}>Contact Support</h6>
+            <ul className="list-unstyled text-white-50 mb-3" style={{ fontSize: '0.9rem' }}>
               <li className="mb-2 d-flex align-items-center gap-2">
                 <FaMapMarkerAlt className="text-accent" /> Chennai, Tamil Nadu, India
               </li>
@@ -71,7 +71,7 @@ const Footer = () => {
               </li>
             </ul>
             
-            <h6 className="text-uppercase fw-bold text-white mb-3" style={{ fontSize: '0.85rem', letterSpacing: '1px' }}>Get Special Offers</h6>
+            <h6 className="text-uppercase fw-bold text-white mb-2" style={{ fontSize: '0.85rem', letterSpacing: '1px' }}>Get Special Offers</h6>
             <form onSubmit={(e) => e.preventDefault()} className="d-flex gap-2">
               <input 
                 type="email" 
@@ -86,7 +86,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-top border-dark mt-5 pt-4 text-center text-white-50" style={{ fontSize: '0.85rem' }}>
+        <div className="border-top border-dark mt-4 pt-3 text-center text-white-50" style={{ fontSize: '0.85rem' }}>
           <p className="mb-0 text-white-50">&copy; {new Date().getFullYear()} NammaService. Made with luxury & quality. All rights reserved.</p>
         </div>
       </div>

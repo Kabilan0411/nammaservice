@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUserCircle, FaSearch, FaDashcube, FaSignOutAlt } from 'react-icons/fa';
 import { AuthContext } from '../context/AuthContext';
+import Avatar from './Avatar';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -90,11 +91,11 @@ const Navbar = () => {
                   data-bs-toggle="dropdown" 
                   aria-expanded="false"
                 >
-                  <img 
-                    src={user.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} 
+                  <Avatar 
+                    src={user.avatar} 
                     alt="Avatar" 
-                    className="rounded-circle border border-2 border-accent" 
-                    style={{ width: '32px', height: '32px', objectFit: 'cover' }} 
+                    size="sm"
+                    className="border-2 border-accent" 
                   />
                   <span>{user.name}</span>
                 </a>

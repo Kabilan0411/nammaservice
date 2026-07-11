@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaHistory, FaBell, FaHeart, FaChevronRight, FaBriefcase, FaEdit, FaCheck, FaTimes, FaCalendarAlt, FaClock, FaCoins, FaStar, FaWhatsapp } from 'react-icons/fa';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import Avatar from '../components/Avatar';
 import api from '../utils/api';
 import { AuthContext } from '../context/AuthContext';
 
@@ -252,11 +253,11 @@ const Dashboard = () => {
       {/* Welcome banner */}
       <div className="row mb-5 align-items-center g-4 border-bottom pb-4">
         <div className="col-md-8 d-flex align-items-center gap-3">
-          <img 
-            src={user.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} 
+          <Avatar 
+            src={user.avatar} 
             alt="Avatar" 
-            className="rounded-circle object-fit-cover shadow-sm border border-3 border-accent" 
-            style={{ width: '64px', height: '64px' }} 
+            size="lg"
+            className="shadow-sm border-3 border-accent" 
           />
           <div>
             <h2 className="fw-bold mb-0">Dashboard Overview</h2>
@@ -387,7 +388,11 @@ const Dashboard = () => {
                           </td>
                           <td>
                             <div className="d-flex align-items-center gap-2">
-                              <img src={b.professional?.user?.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} alt="Pro" className="rounded-circle border" style={{ width: '28px', height: '28px', objectFit: 'cover' }} />
+                              <Avatar 
+                                src={b.professional?.user?.avatar} 
+                                alt="Pro" 
+                                size="xs"
+                              />
                               <span className="fw-semibold text-dark">{b.professional?.user?.name}</span>
                             </div>
                           </td>
@@ -451,7 +456,12 @@ const Dashboard = () => {
                     return (
                       <div className="col-md-6" key={pro.id || pro._id}>
                         <Card className="border shadow-sm text-center d-flex flex-column align-items-center p-3 h-100">
-                          <img src={pro.user?.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} alt="Pro" className="rounded-circle object-fit-cover mb-2 border border-2 border-accent" style={{ width: '70px', height: '70px' }} />
+                          <Avatar 
+                            src={pro.user?.avatar} 
+                            alt="Pro" 
+                            size="lg"
+                            className="mb-2 border-2 border-accent" 
+                          />
                           <h6 className="fw-bold text-dark mb-0">{pro.user?.name}</h6>
                           <span className="badge bg-light text-primary border rounded-pill px-2.5 py-0.5 mt-1 small">{pro.serviceType}</span>
                           <p className="text-muted small text-truncate-3 mt-2 px-2 lh-relaxed">{pro.title}</p>
@@ -532,11 +542,11 @@ const Dashboard = () => {
                 <div className="row g-3">
                   <div className="col-md-12 text-center mb-4">
                     <div className="d-inline-block position-relative">
-                      <img 
-                        src={profileAvatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} 
+                      <Avatar 
+                        src={profileAvatar} 
                         alt="Profile Preview" 
-                        className="rounded-circle object-fit-cover shadow-sm border border-3 border-accent" 
-                        style={{ width: '120px', height: '120px' }} 
+                        size="xl"
+                        className="shadow-sm border-3 border-accent" 
                       />
                       <div className="mt-2">
                         <label className="btn btn-sm btn-outline-secondary px-3 rounded-pill" style={{ cursor: 'pointer' }}>
@@ -646,7 +656,11 @@ const Dashboard = () => {
                           <tr key={b._id}>
                             <td>
                               <div className="d-flex align-items-center gap-2">
-                                <img src={b.user?.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} alt="Client" className="rounded-circle border" style={{ width: '28px', height: '28px', objectFit: 'cover' }} />
+                                <Avatar 
+                                  src={b.user?.avatar} 
+                                  alt="Client" 
+                                  size="xs"
+                                />
                                 <span className="fw-semibold text-dark">{b.user?.name}</span>
                               </div>
                             </td>

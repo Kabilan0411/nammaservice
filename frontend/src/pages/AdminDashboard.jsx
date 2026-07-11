@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaUsers, FaBriefcase, FaCalendarCheck, FaMoneyBillWave, FaTrash, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import Avatar from '../components/Avatar';
 import api from '../utils/api';
 import { AuthContext } from '../context/AuthContext';
 
@@ -253,7 +254,7 @@ const AdminDashboard = () => {
                     {users.map(u => (
                       <tr key={u._id}>
                         <td>
-                          <img src={u.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} alt="Av" className="rounded-circle border" style={{ width: '32px', height: '32px', objectFit: 'cover' }} />
+                          <Avatar src={u.avatar} alt="Av" size="sm" />
                         </td>
                         <td><span className="fw-semibold text-dark">{u.name}</span></td>
                         <td><span className="text-secondary small">{u.email}</span></td>
@@ -298,7 +299,7 @@ const AdminDashboard = () => {
                       <tr key={p._id}>
                         <td>
                           <div className="d-flex align-items-center gap-2">
-                            <img src={p.user?.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} alt="Av" className="rounded-circle border" style={{ width: '28px', height: '28px', objectFit: 'cover' }} />
+                            <Avatar src={p.user?.avatar} alt="Av" size="xs" />
                             <span className="fw-semibold text-dark small">{p.user?.name}</span>
                           </div>
                         </td>

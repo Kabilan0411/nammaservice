@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FaStar, FaMapMarkerAlt, FaCheckCircle, FaWhatsapp, FaEnvelope, FaBriefcase, FaCalendarAlt, FaClock, FaPen } from 'react-icons/fa';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import Avatar from '../components/Avatar';
 import api from '../utils/api';
 import { AuthContext } from '../context/AuthContext';
 
@@ -199,11 +200,11 @@ const ProfessionalProfile = () => {
         <div className="col-lg-8">
           <Card className="mb-4 shadow-sm border border-light">
             <div className="d-flex flex-column flex-md-row gap-4 align-items-center align-items-md-start">
-              <img 
-                src={pro.user?.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} 
+              <Avatar 
+                src={pro.user?.avatar} 
                 alt={pro.user?.name} 
-                className="rounded-circle shadow-sm object-fit-cover border border-4 border-accent" 
-                style={{ width: '130px', height: '130px' }} 
+                size="xxl"
+                className="shadow-sm border-4 border-accent" 
               />
               <div className="text-center text-md-start w-100">
                 <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-2">
@@ -282,11 +283,10 @@ const ProfessionalProfile = () => {
                   <div key={rev._id} className="border-bottom pb-3">
                     <div className="d-flex justify-content-between align-items-center mb-2">
                       <div className="d-flex align-items-center gap-2">
-                        <img 
-                          src={rev.user?.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} 
+                        <Avatar 
+                          src={rev.user?.avatar} 
                           alt={rev.user?.name} 
-                          className="rounded-circle object-fit-cover border" 
-                          style={{ width: '36px', height: '36px' }} 
+                          size="sm"
                         />
                         <div>
                           <h6 className="mb-0 fw-bold text-dark">{rev.user?.name}</h6>

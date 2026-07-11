@@ -13,7 +13,6 @@ import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import AdminDashboard from './pages/AdminDashboard';
 import VerifyEmail from './pages/VerifyEmail';
-import Chatbot from './components/Chatbot';
 import { AuthContext } from './context/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -56,7 +55,6 @@ function App() {
             <Route path="*" element={<Navigate to={user ? "/" : "/login"} replace />} />
           </Routes>
         </main>
-        {user && <Chatbot />}
         {user && <Footer />}
       </div>
     </Router>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaWrench, FaBolt, FaHammer, FaWind, FaPaintRoller, FaBroom, FaFilter, FaLaptopMedical, FaGraduationCap, FaStar, FaArrowRight, FaUsers, FaClipboardCheck, FaRegSmile } from 'react-icons/fa';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import Avatar from '../components/Avatar';
 import api from '../utils/api';
 
 const Home = () => {
@@ -131,7 +132,7 @@ const Home = () => {
                   src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                   alt="Premium Home Services" 
                   className="img-fluid rounded-4 shadow-premium"
-                  style={{ maxHeight: '480px', width: '540px', objectFit: 'cover', border: '1px solid var(--border-color)' }}
+                  style={{ maxHeight: '480px', width: '100%', maxWidth: '540px', objectFit: 'cover', border: '1px solid var(--border-color)' }}
                 />
                 
                 {/* Floating Rating Card */}
@@ -281,11 +282,11 @@ const Home = () => {
               {featuredPros.map((pro) => (
                 <div className="col-md-4" key={pro._id}>
                   <Card className="h-100 text-center d-flex flex-column align-items-center p-4">
-                    <img 
-                      src={pro.user?.avatar || 'https://res.cloudinary.com/demo/image/upload/v1580996846/avatar.png'} 
+                    <Avatar 
+                      src={pro.user?.avatar} 
                       alt={pro.user?.name} 
-                      className="rounded-circle object-fit-cover shadow-sm border border-3 border-accent mb-3" 
-                      style={{ width: '90px', height: '90px' }} 
+                      size={90}
+                      className="shadow-sm border-3 border-accent mb-3" 
                     />
                     <h5 className="fw-bold mb-1">{pro.user?.name}</h5>
                     <span className="badge bg-light text-primary border rounded-pill mb-2 px-3 py-1 text-uppercase fw-semibold" style={{ fontSize: '0.75rem' }}>
@@ -333,7 +334,7 @@ const Home = () => {
                     "{test.text}"
                   </p>
                   <div className="d-flex align-items-center gap-3">
-                    <img src={test.avatar} alt={test.name} className="rounded-circle object-fit-cover border" style={{ width: '48px', height: '48px' }} />
+                    <Avatar src={test.avatar} alt={test.name} size={48} className="mb-0" />
                     <div>
                       <h6 className="mb-0 fw-bold text-dark">{test.name}</h6>
                       <small className="text-muted">{test.role}</small>
